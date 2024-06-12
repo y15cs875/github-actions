@@ -12,7 +12,7 @@ jobs:
           run: sudo apt-get install cowsay -y
         
         - name: Generate ASCII Artwork
-          run: cowsay -f dragon "RUn for cover,I am a DRAGON" >> drgaon.txt
+          run: cowsay -f dragon "RUn for cover,I am a DRAGON" >> dragon.txt
         
         - name: Test file exists
           run: grep -i "dragon" dragon.txt
