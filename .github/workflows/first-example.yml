@@ -9,10 +9,15 @@ jobs:
           uses: actions/checkout@v3
         
         - name: Welcome message
-          run: echo "My First github action"
+          run: |
+            echo "My First github action"
+            ls -all
+            cat README.md
         
-        - name: List files
-          run: ls
+        - name: Generate ASCII Artwork
+          run: cowsay -f dragon "RUn for cover,I am a DRAGON" >> drgaon.txt   
+        # - name: List files
+        #   run: ls
         
-        - name: Read File
-          run: cat README.md
+        # - name: Read File
+        #   run: cat README.md
