@@ -8,17 +8,23 @@ jobs:
         - name: Setup checkout
           uses: actions/checkout@v3
         
-        - name: Install cowsay
-          run: sudo apt-get install cowsay -y
+        - name: run schell script
+          run: |
+            chmod +x ascii-script.sh
+            ./ascii-script.sh
+
         
-        - name: Generate ASCII Artwork
-          run: cowsay -f dragon "RUn for cover,I am a DRAGON" >> dragon.txt
+        # - name: Install cowsay
+        #   run: sudo apt-get install cowsay -y
         
-        - name: Test file exists
-          run: grep -i "dragon" dragon.txt
+        # - name: Generate ASCII Artwork
+        #   run: cowsay -f dragon "RUn for cover,I am a DRAGON" >> dragon.txt
         
-        - name: Display dragon
-          run: cat dragon.txt
+        # - name: Test file exists
+        #   run: grep -i "dragon" dragon.txt
+        
+        # - name: Display dragon
+        #   run: cat dragon.txt
            
         - name: Welcome message
           run: |
