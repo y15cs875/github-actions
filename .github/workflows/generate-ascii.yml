@@ -1,0 +1,34 @@
+name: Generate ascii network
+
+on: push
+jobs:
+    first_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Setup checkout
+          uses: actions/checkout@v3
+        
+        - name: Install cowsay
+          run: sudo apt-get install cowsay -y
+        
+        - name: Generate ASCII Artwork
+          run: cowsay -f dragon "RUn for cover,I am a DRAGON" >> drgaon.txt
+        
+        - name: Test file exists
+          run: grep -i "dragon" dragon.txt
+        
+        - name: Display dragon
+          run: cat dragon.txt
+           
+        - name: Welcome message
+          run: |
+            echo "My First github action"
+            ls -all
+            cat README.md
+            ls -ltra
+
+        # - name: List files
+        #   run: ls
+        
+        # - name: Read File
+        #   run: cat README.md
