@@ -1,0 +1,44 @@
+name: Multiple jobs
+
+on: push
+
+jobs:
+    build_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Setup checkout
+          uses: actions/checkout@v3
+        
+        - name: Install cowsay
+          run: sudo apt-get install cowsay -y
+        
+        - name: Generate ASCII Artwork
+          run: cowsay -f dragon "RUn for cover,I am a DRAGON" >> dragon.txt
+        
+        - name: sleep 30 seconds
+          run: sleep 30
+        
+        - name: Upload artifacts
+          
+    
+    test_job:
+        runs-on: ubuntu-latest
+        needs: build_job
+        if: needs.build_job.result == 'success'
+        steps: 
+        - name: Test file exists
+          run: grep -i "dragon" dragon.txt
+    
+    deploy_job:
+        runs-on: ubunutu-latest
+        needs: test_job
+        steps:        
+        - name: Display dragon
+          run: cat dragon.txt
+           
+        - name: Welcome message
+          run: |
+            echo "My First github action"
+            ls -all
+            cat README.md
+            ls -ltra
